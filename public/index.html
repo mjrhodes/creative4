@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Schedule Maker</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+
+    <div class="header-container">
+      <div class="header">
+	<h1>Schedule Maker</h1>
+      </div>
+    </div>
+
+    <div id="app">
+      <div class="container">
+	<div class="top-bar">
+	  <!--	  <button class="button options_btn">Options</button>-->
+	</div>
+	
+	<div class="stuSchBtns left">
+	  <form v-on:submit.prevent="addEmployee">
+	    <input v-model="newName" placeholder="Name">
+	    <input type="checkbox" v-model="monday">Monday</input>
+	    <input type="checkbox" v-model="tuesday">Tuesday</input>
+	    <input type="checkbox" v-model="wednesday">Wednesday</input>
+	    <input type="checkbox" v-model="thursday">Thursday</input>
+	    <input type="checkbox" v-model="friday">Friday</input>	    
+	    <button class="button add_btn" type="submit">Add Employee</button>
+	  </form>
+	  <!--	  <button class="button remove_btn" v-on:click="removeEmployee">Remove Employee</button>-->
+	</div>
+	
+	<div class="stuSchBtns right">
+	  <!--	  <button class="button clear_btn">Clear</button>-->
+	</div>
+	
+	<div class="tab-pane top-pane">
+	  <div class="employees" v-for="(shifts, name, index) in schedules">
+	    <h4>{{name}}</h4>
+	    <ul v-for="shift in shifts">
+	      <li>{{shift}}</li>
+	    </ul>
+	  </div>
+	</div>
+	
+	
+	<div class="schBtnsTable">
+	  <div class="schBtnsRow">
+	    <div class="schBtns left">
+	      <button class="button generate_btn" v-on:click="generate">Generate</button>
+	    </div>
+	    
+	    <div class="schBtns right">
+	      <button class="button clearAll_btn" v-on:click="clearAll">Clear All</button>
+	    </div>
+	  </div>
+	</div>
+	
+	<div class="tab-pane bottom-pane">
+	  <div class="day">
+	    <h3>Monday</h3>
+	    <ul v-for="worker in mondayWorkers">
+	      <li>{{worker}}</li>
+	    </ul>
+	  </div>
+	  <div class="day">
+	    <h3>Tuesday</h3>
+	    <ul v-for="worker in tuesdayWorkers">
+	      <li>{{worker}}</li>
+	    </ul>
+	  </div>
+	  <div class="day">
+	    <h3>Wednesday</h3>
+	    <ul v-for="worker in wednesdayWorkers">
+	      <li>{{worker}}</li>
+	    </ul>
+	  </div>
+	  <div class="day">
+	    <h3>Thursday</h3>
+	    <ul v-for="worker in thursdayWorkers">
+	      <li>{{worker}}</li>
+	    </ul>
+	  </div>
+	  <div class="day">
+	    <h3>Friday</h3>
+	    <ul v-for="worker in fridayWorkers">
+	      <li>{{worker}}</li>
+	    </ul>
+	  </div>
+	</div>
+	
+      </div>
+      <p>Github Repository: <a href="https://github.com/mjrhodes/creative4">mjrhodes-creative4</a></p>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js" integrity="sha256-mpnrJ5DpEZZkwkE1ZgkEQQJW/46CSEh/STrZKOB/qoM=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+    <script src="/script.js"></script>
+  </body>
+</html>
